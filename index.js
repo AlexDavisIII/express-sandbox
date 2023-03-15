@@ -5,6 +5,31 @@ const app = express(); //creates instance of web server (express)
 app.use(cors()); //uses "cors" middleware installed using "npm install cors" to allow a user to be able to see this link (localhost)
 
 
+//creates an array of games! "Games" will be an displayed as objects.
+let gamesBase = {
+    "count": "3",
+    "games": [
+        {
+            "name": "Super Mario Brothers",
+            "rating": "E",
+            "director": "Shigeru Miyamoto"
+        },
+        {
+            "name": "Metal Gear Solid",
+            "rating": "T",
+            "director": "Hideo Kojima"
+        },
+        {
+            "name": "Starfield",
+            "rating": "M",
+            "director": "Todd Howard"
+        },
+    ]
+};
+
+
+
+
 /* ROUTING */
 //get function on the app which takes a request and response objects. Sends message out to root directory (home page)
 app.get('/', (req, res) => {
