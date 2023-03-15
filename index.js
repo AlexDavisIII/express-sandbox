@@ -1,13 +1,15 @@
 const express = require('express');
-
+const cors = require('cors');
 const app = express(); //creates instance of web server (express)
 
-/*router definition. Used to define different paths (routes) on the api*/
+app.use(cors()); //uses "cors" middleware installed using "npm install cors" to allow a user to be able to see this link (localhost)
+
+
+/* ROUTING */
 //get function on the app which takes a request and response objects. Sends message out to root directory (home page)
 app.get('/', (req, res) => {
     res.send('Hello To the world out there');
 })
-
 
 //get function on the app which sends out HTML and logs a message to the console when going to "/games" directory. 
 /* NOTE: "/games" is 'created' right here in the app.get on line 14. You won't find an "index.html/games" as one doesn't exist */
