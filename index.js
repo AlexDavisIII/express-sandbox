@@ -4,7 +4,6 @@ const app = express(); //creates instance of web server (express)
 
 app.use(cors()); //uses "cors" middleware installed using "npm install cors" to allow a user to be able to see this link (localhost)
 
-
 //creates an array of games! "Games" will be an displayed as objects.
 let gamesBase = {
     "count": "3",
@@ -41,6 +40,23 @@ app.get('/', (req, res) => {
 app.get('/games', (req, res) => {
     res.send(`<a href="http://www.youtube.com">This link</a> will take you to youtube`);
     console.log(`Just hanging out here on the console. What's going on! Playing any games?`);
+
+})
+
+
+app.get('/games/:rating', (req, res) => {
+    let rating = req.params.rating; //sets the value of ":rating" to the "director" value
+    let game = gamesBase.games.find(theGame => theGame.rating == rating); //searches GameBase's "games" array of objects to find rating matching the /:rating parameter
+    
+    if(game){
+        res.send(JSON.stringify(game)); //outputs result in a JSON string
+    }else{
+        res.status(404).send(JSON.stringify({
+            "error": {
+                "message": `We're sorry, there aren't any games with a ${rating} rating.`
+            } 
+        }))
+    }
 })
 
 //run server and listen to particular port for a request
