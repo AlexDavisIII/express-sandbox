@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
 app.get('/games', (req, res) => {
     res.send(`<a href="http://www.youtube.com">This link</a> will take you to youtube`);
     console.log(`Just hanging out here on the console. What's going on! Playing any games?`);
-
 })
 
 
